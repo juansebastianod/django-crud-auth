@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="container">
+
+        <div class="col-md-6 offset-md-3">
+            <h2>task pedding</h2>
+    <ul class="list-group">
+    {% for task in tasks %}
+    
+    <a class="list-group-item" href="{% url 'details' task.id %}">
+   
+
+        {% if task.important %}
+    <strong>{{task.title}}</strong>
+    {% else %}
+    <h1>{{task.title}}</h1>
+    {% endif %}
+    <p>{{task.description}} </p>
+    <p>{{task.user.username}} </p>
+    <p>{{task.daracompleted|date:'M j Y:i'}}</p>
+    
+  
+    </a>
+
+    {%endfor%}
+    </ul>
+        </div>
+    </main>
+    {% endblock %}
+</body>
+</html>
